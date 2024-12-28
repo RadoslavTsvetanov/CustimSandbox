@@ -38,7 +38,12 @@ Another thing that is common for attackers to use are built in linux binaries li
 So a good way to defend is to just not give them to the attacker but that on a normal machine is hard close to impossible however our sandbox works as a proxy between everything that the 
 program needs to get from the host so just as sycalls we can also modify the binaries as well
 
+## Where is it useful?
+if you first thing about it you will think to yourself `pff this id bs there is so much overenginnering i will just use a lib for blacklisting` 
+and yeah this is a valid opinion but your blacklist lib could be vulnerable to one of the mmany types of input sanitization bypasses whic hcould be used for command injection but they wont go through the sandbox. 
 
+Imagine the following sceanrio 
+You have created a input which executes a command but you have balcklisted `ls` but the lib you have chosen hasnt implemented character shifting defense so the string is evaluated to ls (now if you are running without my sandbox this is the end), lucky for you you are in the sandbox and you have made the ls binary to point to nothing so even if he excutes ls nothing happens since it calls an empty binary 
 
 ## How it works
 ### In general
