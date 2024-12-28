@@ -2,7 +2,7 @@
 
 ## Supported OSes
 - Linux: yes
-- Windows: pff did you think i was gonna say yes, i amnot defeloping for this shit
+- Windows: pff did you think i was gonna say yes, i am not developing for this shit
 - MacOS: if someone buys me a mac for testing it i will try my best
 
 
