@@ -1,6 +1,9 @@
 # CustimSandbox
 
-
+## Supported OSes
+- Linux: yes
+- Windows: pff did you think i was gonna say yes, i amnot defeloping for this shit
+- MacOS: if someone buys me a mac for testing it i will try my best
 
 
 ## Why
@@ -36,8 +39,72 @@ So a good way to defend is to just not give them to the attacker but that on a n
 program needs to get from the host so just as sycalls we can also modify the binaries as well
 
 
-#### How it works
 
-##### Syscall injection
+## How it works
+### In general
+Bassically it creates a vitual space a (a light vm even) in which it overwrites the syscalls and for the binaries it just created a sym link to the custom binary in placve of the prignal one executable
+
+
+### Syscall injection
 ![image](https://github.com/user-attachments/assets/02f8606c-0e42-4f91-ba3a-2db5f474aa5b)
 Each syscall onvoked is being provided as a wrapper aroundd the original function function to which you have acces to the params and can do whatever you want 
+
+### Binary injection
+In the virtual space we have created we just change thee PATH
+
+
+
+## Docs 
+CustimSandbox uses projects to resonate between different sandbox contexts so to create a new project go in the projects folder and create a directory with whatever name you want. In there you need to create a config file which follows the 
+
+
+
+
+
+
+
+
+
+
+## Resources Dump (here are materials which are images files etc... that need to be refernced multiple times or just to be a bit cleaner)
+
+### Config Template
+{
+syscalls: CustonSyscall[]
+binaries: CustomBinary[]
+}
+
+
+### Types
+#### Custom Syscall
+```json
+{
+syscall_id: string,
+content: string
+}
+```
+
+example one 
+```json
+{
+  content: ```
+  if(req.url.containes("google.com")){
+    exit())
+  }
+}
+```
+
+#### Cusomt Binary
+```json
+{
+"id":string,
+"path_to_custom_binary": string
+}
+```
+
+example
+
+```json
+"id":"curl",
+"path_to_custom_binary":"/home/custimCurl"
+```
